@@ -1,7 +1,7 @@
-// Daniel Shiffman
-// http://codingtra.in
-// https://youtu.be/CKeyIbT3vXI
+/*
+remixing Daniel Shiffman
 
+*/
 const fireworks = [];
 let gravity;
 
@@ -9,6 +9,9 @@ var firr1,fire2,fire3;
 var im1, start;
 var btn;
 var launch=0;
+
+var px,py;
+let maxSpeed = 15;
 
 
 function preload(){
@@ -21,6 +24,10 @@ function preload(){
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
+  px = width / 2;
+  py = height / 2;
+
+  
   btn=select("#bottone");
   btn.position(width/2-250,height/2-250);
   //btn.hide();
@@ -34,6 +41,8 @@ function setup() {
 
 function draw() {
   colorMode(RGB);
+  px += map(rotationY, -180, 180, -maxSpeed, maxSpeed);
+  py += map(rotationX, -180, 180, -maxSpeed, maxSpeed);
   
   background(0, 0, 0, 25);
   //start=image(im1,width/2-250,height/2-250);
